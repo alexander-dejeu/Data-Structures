@@ -10,7 +10,24 @@ def decode(str_num, base):
     base -- base of given number
     """
     assert 2 <= base <= 36
-    # TODO: Decode number
+    # Step 1 see how many times it is divided by self
+    sum = 0
+    length = len(str_num)
+    for i in range(0, length):
+        try:
+            digit_value = int(str_num[i])
+            sum += pow(base, length-1-i) * digit_value
+        except ValueError:
+            # Must be a non digit
+            # Asumption - all letters will be lower case
+            # Subract 87 because ascii value of 'a' is 97
+            char_to_value = ord(str_num[i].lower()) - 87
+            print 'Yikes, the ord value is: ', char_to_value
+            sum += pow(base, length-1-i) * char_to_value
+
+    print 'str rep: ', str_num, ' base: ', base
+    print 'convert: ', sum
+    return sum
 
 def encode(num, base):
     """
@@ -20,6 +37,7 @@ def encode(num, base):
     """
     assert 2 <= base <= 36
     # TODO: Encode number
+
 
 def convert(str_num, base1, base2):
     """
