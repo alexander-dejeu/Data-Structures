@@ -92,7 +92,9 @@ def convert(str_num, base1, base2):
     """
     assert 2 <= base1 <= 36
     assert 2 <= base2 <= 36
-    # TODO: Convert number
+    decode_base10 = decode(str_num, base1)
+    encoded_result = encode(decode_base10, base2)
+    return encoded_result
 
 
 def main():
