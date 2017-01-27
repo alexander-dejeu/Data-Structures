@@ -54,10 +54,6 @@ def encode(num, base):
     result = ''
     current_power = highest_power
     while num >= 1:
-        # if num == 1:
-        #     result = result.ljust(highest_power,'0')
-        #     result += str(1)
-        #     break
         i = 1
         highest_value = pow(base, current_power) * (base - i)
         print 'high val: ', highest_value
