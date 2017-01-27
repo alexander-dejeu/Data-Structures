@@ -28,6 +28,7 @@ class TestSearch(unittest.TestCase):
         # binary search requires list values to be in sorted order
         names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
         # binary search should return the index of each item in the list
+        
         assert binary_search(names, 'Alex') == 0
         assert binary_search(names, 'Brian') == 1
         assert binary_search(names, 'Julia') == 2
