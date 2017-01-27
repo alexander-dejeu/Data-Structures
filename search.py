@@ -1,5 +1,5 @@
 #!python
-import math
+
 
 def linear_search(array, item):
     """return the first index of item in array or None if item is not found"""
@@ -27,9 +27,6 @@ def linear_search_recursive(array, item, index=0):
     except IndexError:
         return None
 
-    # once implemented, change linear_search to call linear_search_recursive
-    # to verify that your recursive implementation passes all tests below
-
 
 def binary_search(array, item):
     """return the index of item in sorted array or None if item is not found"""
@@ -40,23 +37,17 @@ def binary_search(array, item):
 
 
 def binary_search_iterative(array, item):
-    # Init tried with just a single var but it caused problems with jumping one
-    # bellow and above the number forever :/ Changed to two vars
     first = 0
     last = len(array) - 1
-    valid = True
-    while valid:
+    while first <= last:
         mid_point = int((first + last) / 2)
-        if first > last:
-            return None
         if array[mid_point] == item:
             return mid_point
         elif array[mid_point] > item:
             last = mid_point - 1
         else:
             first = mid_point + 1
-    # once implemented, change binary_search to call binary_search_iterative
-    # to verify that your iterative implementation passes all tests below
+    return None
 
 
 def binary_search_recursive(array, item, left=None, right=None):
@@ -72,13 +63,6 @@ def binary_search_recursive(array, item, left=None, right=None):
         if array[mid_point] == item:
             return mid_point
         elif array[mid_point] > item:
-            right = mid_point - 1
+            return binary_search_recursive(array, item, left, mid_point - 1)
         else:
-            left = mid_point + 1
-        return binary_search_recursive(array, item, left, right)
-
-
-
-
-    # once implemented, change binary_search to call binary_search_recursive
-    # to verify that your recursive implementation passes all tests below
+            return binary_search_recursive(array, item, mid_point + 1, right)
