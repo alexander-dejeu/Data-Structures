@@ -10,38 +10,39 @@ class StringsTest(unittest.TestCase):
         # simple palindromes that are mirrored strings
         assert is_palindrome('') is True  # base case
         assert is_palindrome('A') is True  # base case
+        print is_palindrome('BB')
         assert is_palindrome('BB') is True
         assert is_palindrome('LOL') is True
         assert is_palindrome('noon') is True
         assert is_palindrome('radar') is True
         assert is_palindrome('racecar') is True
 
-    def DISABLED_test_is_palindrome_with_mixed_casing(self):
+    def test_is_palindrome_with_mixed_casing(self):
         # palindromes with mixed leter casing
         assert is_palindrome('Bb') is True
         assert is_palindrome('NoOn') is True
         assert is_palindrome('Radar') is True
         assert is_palindrome('RaceCar') is True
 
-    def DISABLED_test_is_palindrome_with_whitespace(self):
+    def test_is_palindrome_with_whitespace(self):
         # palindromes with whitespace
         assert is_palindrome('taco cat') is True
         assert is_palindrome('race car') is True
         assert is_palindrome('race fast safe car') is True
 
-    def DISABLED_test_is_palindrome_with_whitespace_and_mixed_casing(self):
+    def test_is_palindrome_with_whitespace_and_mixed_casing(self):
         # palindromes with whitespace and mixed letter casing
         assert is_palindrome('Taco Cat') is True
         assert is_palindrome('Race Car') is True
         assert is_palindrome('Race Fast Safe Car') is True
 
-    def DISABLED_test_is_palindrome_with_whitespace_and_punctuation(self):
+    def test_is_palindrome_with_whitespace_and_punctuation(self):
         # palindromes with whitespace and punctuation
         assert is_palindrome('taco cat!') is True
         assert is_palindrome('race, car!!') is True
         assert is_palindrome('race fast, safe car.') is True
 
-    def DISABLED_test_is_palindrome_with_mixed_casing_and_punctuation(self):
+    def test_is_palindrome_with_mixed_casing_and_punctuation(self):
         # palindromes with whitespace, punctuation and mixed letter casing
         assert is_palindrome('Race fast, safe car.') is True
         assert is_palindrome('Was it a car or a cat I saw?') is True

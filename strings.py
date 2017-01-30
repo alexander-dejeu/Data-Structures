@@ -1,6 +1,8 @@
 #!python
 
 import string
+import math
+import re
 
 
 def is_palindrome(text):
@@ -9,22 +11,37 @@ def is_palindrome(text):
     # implement is_palindrome_iterative and is_palindrome_recursive below, then
     # change this to call your implementation to verify it passes all tests
     assert isinstance(text, str)
-    return is_palindrome_iterative(text)
-    # return is_palindrome_recursive(text)
+    # return is_palindrome_iterative(text)
+    return is_palindrome_recursive(text)
 
 
 def is_palindrome_iterative(text):
-    # TODO: implement the is_palindrome function iteratively here
-    pass
-    # once implemented, change is_palindrome to call is_palindrome_iterative
-    # to verify that your iterative implementation passes all tests
+    text = text.lower()
+    text = re.sub("[^a-zA-Z]+", "", text)
+    length = len(text)
+    max_iterations = length/2
+
+    for i in range(0, max_iterations):
+        first_char = text[i]
+        second_char = text[length - 1 - i]
+        if first_char != second_char:
+            return False
+    return True
 
 
 def is_palindrome_recursive(text, left=None, right=None):
-    # TODO: implement the is_palindrome function recursively here
-    pass
-    # once implemented, change is_palindrome to call is_palindrome_recursive
-    # to verify that your iterative implementation passes all tests
+    if left is None and right is None:
+        text = text.lower()
+        text = re.sub("[^a-zA-Z]+", "", text)
+        length = len(text)
+        left = 0
+        right = length-1
+    if left >= right:
+        return True
+    if text[left] == text[right]:
+        return is_palindrome_recursive(text, left+1, right-1)
+    else:
+        return False
 
 
 def main():
