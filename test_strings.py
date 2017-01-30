@@ -15,12 +15,14 @@ class StringsTest(unittest.TestCase):
 
     def test_string_search_matches(self):
         assert is_containing('', '') is True
+        assert is_containing('helloworld', 'helloworld')
+        assert is_containing('123', '12')
+        assert is_containing('!23$5^&*', '$')
 
     def test_is_palindrome_with_mirrored_strings(self):
         # simple palindromes that are mirrored strings
         assert is_palindrome('') is True  # base case
         assert is_palindrome('A') is True  # base case
-        print is_palindrome('BB')
         assert is_palindrome('BB') is True
         assert is_palindrome('LOL') is True
         assert is_palindrome('noon') is True
