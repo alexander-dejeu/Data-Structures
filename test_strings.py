@@ -1,10 +1,20 @@
 #!python
 
 from strings import is_palindrome
+from strings import is_containing
 import unittest
 
 
 class StringsTest(unittest.TestCase):
+
+    def test_string_search_no_matches(self):
+        assert is_containing('alex', '3x3') is False
+        assert is_containing('fourdogs', 'sgodruof') is False
+        assert is_containing('1234', '12345') is False
+        assert is_containing('', 'a') is False
+
+    def test_string_search_matches(self):
+        assert is_containing('', '') is True
 
     def test_is_palindrome_with_mirrored_strings(self):
         # simple palindromes that are mirrored strings

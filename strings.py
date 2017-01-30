@@ -5,6 +5,28 @@ import math
 import re
 
 
+def is_containing(text, target):
+    assert isinstance(text, str)
+    assert isinstance(target, str)
+    return is_containing_iterative(text, target)
+
+
+def is_containing_iterative(text, target):
+    search_text_length = len(text)
+    target_length = len(target)
+
+    if target_length > search_text_length:
+        return False
+
+    for i in range(0, search_text_length):
+        window = text[i:i+target_length]
+        if window == target:
+            return True
+    if search_text_length == 0 and target_length == 0:
+        return True
+    return False
+    
+
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
     backwards, ignoring punctuation, whitespace, and letter casing"""
