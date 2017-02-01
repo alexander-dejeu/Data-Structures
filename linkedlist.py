@@ -18,6 +18,7 @@ class LinkedList(object):
         """Initialize this linked list and append the given items, if any"""
         self.head = None
         self.tail = None
+        self.length = 0
         if iterable:
             for item in iterable:
                 self.append(item)
@@ -31,6 +32,7 @@ class LinkedList(object):
         items = []
         current = self.head
         while current is not None:
+            self.length += 1
             items.append(current.data)
             current = current.next
         return items
@@ -59,6 +61,7 @@ class LinkedList(object):
             self.tail.next = new_node
         # Update tail node
         self.tail = new_node
+        self.length += 1
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list"""
@@ -70,6 +73,7 @@ class LinkedList(object):
         # Check if list was empty
         if self.tail is None:
             self.tail = new_node
+        self.length += 1
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError"""
@@ -94,6 +98,7 @@ class LinkedList(object):
                 if previous is not None:
                     previous.next = None
                 self.tail = previous
+            self.length -= 1
         else:
             raise ValueError('Item not found: {}'.format(item))
 

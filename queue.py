@@ -1,11 +1,12 @@
 #!python
 
+
+
 class Queue(object):
 
     def __init__(self, iterable=None):
         """Initialize this queue and enqueue the given items, if any"""
-        # TODO: initialize instance variables
-        pass
+        self.data =
         if iterable:
             for item in iterable:
                 self.enqueue(item)
