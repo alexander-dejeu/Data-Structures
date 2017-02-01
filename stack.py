@@ -1,5 +1,5 @@
 #!python
-from linkedlist import LinkedList, Node
+from linkedlist import LinkedList
 
 
 # class Stack(object):
