@@ -13,6 +13,11 @@ class HashTable(object):
         """Return a string representation of this hash table"""
         return 'HashTable({})'.format(self.length())
 
+    def __iter__(self):
+            for bucket in self.buckets:
+                for value in bucket.as_list():
+                    yield value[0]
+
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored
         Best case running time: N(1) constant
@@ -29,7 +34,7 @@ class HashTable(object):
         # TODO: Count number of key-value entries in each of the buckets
         length = 0
         for bucket in self.buckets:
-            length += bucket.length()
+                 length += bucket.length
         return length
 
     def contains(self, key):
@@ -76,7 +81,8 @@ class HashTable(object):
             self.delete(key)
         # print maybe_value
         self.buckets[bucket_index].append((key, value))
-        if self.length() > len(self.buckets) * 0.8:
+        key_count = self.length()
+        if key_count > (len(self.buckets)*0.8):
             self.increase_size()
 
     def increase_size(self):
@@ -87,8 +93,7 @@ class HashTable(object):
         for bucket in self.buckets:
             list_of_items = bucket.as_list()
             for item in list_of_items:
-                print item
-                new_buckets_index = hash(item[0]) % len(new_bucket_count)
+                new_buckets_index = hash(item[0]) % new_bucket_count
                 new_buckets[new_buckets_index].append(item)
         self.buckets = new_buckets
 
@@ -134,3 +139,18 @@ class HashTable(object):
             for item in bucket:
                 all_values_list.append(item.data[1])
         return all_values_list
+
+
+def create_hashtable(amount):
+    hash_table = HashTable()
+
+    for i in range(0, amount):
+        hash_table.set('test' + str(i), 'none')
+    return hash_table
+
+
+if __name__ == '__main__':
+    hashT = create_hashtable(40)
+    print hashT
+    print hashT.length()
+    print len(hashT.buckets)
