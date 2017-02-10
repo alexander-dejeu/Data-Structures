@@ -43,11 +43,6 @@ class BinarySearchTree(object):
 
 
 
-
-
-
-
-
     def delete(self, data):
         pass
 
