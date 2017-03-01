@@ -82,8 +82,16 @@ class MinHeap(object):
         # TODO: Swap this item with parent item if values are out of order
         parent_index = self._parent_index(index)
         parent_item = self.items[parent_index]
+
+        if item < parent_item:
+            item, parent_item = parent_item, item
         # ...
         # TODO: Then bubble up again if necessary
+        if parent_index == 0:
+            return
+        grand_parent_index = self._parent_index(parent_index)
+        if item < self.items[grand_parent_index]:
+            self._bubble_up(parent_index)
         # ...
 
     def _bubble_down(self, index):
@@ -97,10 +105,14 @@ class MinHeap(object):
             return  # This index is a leaf node (does not have any children)
         item = self.items[index]
         # TODO: Determine which child item to compare this node's item to
-        child_index = 0
+        if self.items[left_index] <= self.items[right_index]:
+            child_index = left_index
+        else:
+            child_index = right_index
         # ...
         # TODO: Swap this item with a child item if values are out of order
         child_item = self.items[child_index]
+        if child_item <
         # ...
         # TODO: Then bubble down again if necessary
         # ...
